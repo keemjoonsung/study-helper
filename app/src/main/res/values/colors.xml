@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="default_background">#FAFAD6</color>
+    <color name="facebook_blue">#3b5998</color>
+    <color name="kakaotalk_yellow">#FEE500</color>
+
 </resources>

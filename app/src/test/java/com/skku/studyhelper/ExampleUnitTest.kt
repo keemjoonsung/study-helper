@@ -1,4 +1,4 @@
-package com.skku.zooworld
+package com.skku.studyhelper
 
 import org.junit.Test
 

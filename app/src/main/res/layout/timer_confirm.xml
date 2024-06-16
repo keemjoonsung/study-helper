@@ -1,0 +1,64 @@
+<!-- res/layout/dialog_confirm_timer.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textViewConfirmMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현재 설정된 공부 시간은"
+        android:textSize="20sp"
+        android:fontFamily="@font/dunggeunmo"
+        android:textColor="#FFFFFF"
+        android:paddingBottom="10dp"/>
+    <TextView
+        android:id="@+id/textViewMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="      60분 입니다."
+        android:textSize="20sp"
+        android:fontFamily="@font/dunggeunmo"
+        android:textColor="#FFFFFF"
+        android:paddingBottom="10dp"/>
+    <TextView
+        android:id="@+id/textViewConfirmMessage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="    시작하시겠습니까?"
+        android:textSize="20sp"
+        android:fontFamily="@font/dunggeunmo"
+        android:textColor="#FFFFFF"
+        android:paddingBottom="10dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStartTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dunggeunmo"
+            android:background="@color/retro_green"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="시작"/>
+        <androidx.legacy.widget.Space
+            android:layout_width="50dp"
+            android:layout_height="0dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonCancelTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dunggeunmo"
+            android:background="@color/retro_green"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="취소"/>
+    </LinearLayout>
+
+</LinearLayout>

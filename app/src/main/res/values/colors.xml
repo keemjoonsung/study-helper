@@ -5,5 +5,8 @@
     <color name="default_background">#FAFAD6</color>
     <color name="facebook_blue">#3b5998</color>
     <color name="kakaotalk_yellow">#FEE500</color>
+    <color name="retro_blue"> #010080</color>
+    <color name="retro_green">#119fae</color>
+    <color name="retro_darkblue">#200840</color>
 
 </resources>

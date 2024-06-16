@@ -15,7 +15,7 @@
         android:background="@color/retro_darkblue"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
@@ -65,21 +65,20 @@
         app:layout_constraintGuide_end="668dp" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageViewProfile"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="305dp"
         android:layout_height="315dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="75dp"
         android:layout_marginRight="2dp"
         android:layout_marginBottom="35dp"
-        android:src="@drawable/panda"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
-        app:layout_constraintVertical_bias="0.363" />
-
+        app:layout_constraintVertical_bias="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -93,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -102,13 +101,29 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
+    <TextView
+        android:id="@+id/textViewExplain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/retro_green"
+        android:fontFamily="@font/dunggeunmo"
+        android:paddingHorizontal="17dp"
+        android:paddingVertical="32dp"
+        android:text="설명란."
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="514dp" />
+        app:layout_constraintGuide_begin="518dp" />
 
     <ImageView
         android:id="@+id/imageViewHome"
@@ -158,88 +173,37 @@
         android:id="@+id/imageView4"
         android:layout_width="39dp"
         android:layout_height="51dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginRight="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:srcCompat="@drawable/timer" />
-
-    <TextView
-        android:id="@+id/textViewTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/dunggeunmo"
-        android:text= "null"
-        android:textColor="#FFFFFF"
-        android:textSize="27sp"
-        android:layout_marginLeft="8dp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
-
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/button3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="동물 변경"-->
-<!--        android:fontFamily="@font/dunggeunmo"-->
-<!--        android:layout_marginBottom="38dp"-->
-<!--        android:layout_marginLeft="7dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline7"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline12" />-->
-
-    <TextView
-        android:id="@+id/textViewAnimalName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="9dp"
-        android:fontFamily="@font/dunggeunmo"
-        android:text="null"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewProfile"
-        app:layout_constraintStart_toStartOf="@+id/imageViewProfile"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="97dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAnimalName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewGold"
+        app:layout_constraintStart_toEndOf="@+id/textViewGold"
+        app:layout_constraintTop_toTopOf="@+id/textViewGold"
         app:srcCompat="@drawable/coin" />
 
     <TextView
-        android:id="@+id/textViewAnimalGold"
+        android:id="@+id/textViewGold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="null"
-        android:textSize="23sp"
-        android:textColor="#FFFFFF"
         android:fontFamily="@font/dunggeunmo"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
-
-    <TextView
-        android:id="@+id/textViewID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
+        android:text="보유: -1"
+        android:layout_marginRight="75dp"
         android:textColor="#FFFFFF"
-        android:fontFamily="@font/dunggeunmo"
-        android:layout_marginBottom="44dp"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonBuy"
+        android:layout_width="62dp"
+        android:layout_height="42dp"
+        android:fontFamily="@font/dunggeunmo"
+        android:layout_marginLeft="12dp"
+        android:text="구입"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewGold"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/textViewGold" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

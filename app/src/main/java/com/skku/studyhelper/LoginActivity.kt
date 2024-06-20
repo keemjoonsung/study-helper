@@ -45,14 +45,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        if (!hasUsageStatsPermission()) {
-            requestUsageStatsPermission()
-        }
 
         val KAKAO_NATIVE_KEY = BuildConfig.KAKAO_NATIVE_KEY
         val NAVER_CLIENT_ID = BuildConfig.NAVER_CLIENT_ID
         val NAVER_CLIENT_SECRET = BuildConfig.NAVER_CLIENT_SCRETE
-        val keyHash = Utility.getKeyHash(this)
         val kakaoBtn = findViewById<ImageView>(R.id.fake_kakao)
 
         val naverBtn = findViewById<ImageView>(R.id.fake_naver)
@@ -146,27 +142,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun hasUsageStatsPermission(): Boolean {
-        val usageStatsManager = getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-        val currentTime = System.currentTimeMillis()
-        val stats = usageStatsManager.queryUsageStats(
-            UsageStatsManager.INTERVAL_DAILY,
-            currentTime - 1000 * 60 * 60 * 24, currentTime
-        )
-        return stats != null && stats.isNotEmpty()
-    }
-
-    private fun requestUsageStatsPermission() {
-        AlertDialog.Builder(this).apply {
-            setTitle("권한 필요")
-            setMessage("이 앱은 사용량 접근 권한이 필요합니다. 설정에서 권한을 허용해 주세요.")
-            setPositiveButton("설정으로 이동") { _, _ ->
-                startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-            }
-            setNegativeButton("취소", null)
-            show()
-        }
-    }
 
 
 }

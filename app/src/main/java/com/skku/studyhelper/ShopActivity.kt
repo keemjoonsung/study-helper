@@ -88,7 +88,7 @@ class ShopActivity : AppCompatActivity() {
                         dialog.show()
 
 
-                    } else{ //살수 없음
+                    } else{ //골드 부족
                         val dialog = Dialog(this)
                         val inflater = LayoutInflater.from(this)
                         val dialogView = inflater.inflate(R.layout.shop_alarm, null)

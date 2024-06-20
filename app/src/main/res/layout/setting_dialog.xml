@@ -1,0 +1,36 @@
+<!-- res/layout/dialog_stopwatch.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="변경하실 캐릭터를 고르세요."
+        android:textSize="20sp"
+        android:fontFamily="@font/dunggeunmo"
+        android:textColor="#FFFFFF"
+
+        android:paddingBottom="10dp"/>
+    <ListView
+        android:id="@+id/characterListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+         />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dunggeunmo"
+            android:background="@color/retro_green"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="취소"/>
+
+</LinearLayout>

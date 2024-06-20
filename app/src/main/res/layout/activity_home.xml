@@ -65,7 +65,7 @@
         app:layout_constraintGuide_end="668dp" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.skku.studyhelper.PixelatedImageView
         android:id="@+id/imageViewProfile"
         android:layout_width="305dp"
         android:layout_height="315dp"
@@ -169,34 +169,23 @@
         android:id="@+id/textViewTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:fontFamily="@font/dunggeunmo"
-        android:text= "null"
+        android:text="null"
         android:textColor="#FFFFFF"
         android:textSize="27sp"
-        android:layout_marginLeft="8dp"
 
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/button3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="동물 변경"-->
-<!--        android:fontFamily="@font/dunggeunmo"-->
-<!--        android:layout_marginBottom="38dp"-->
-<!--        android:layout_marginLeft="7dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline7"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline12" />-->
 
     <TextView
         android:id="@+id/textViewAnimalName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="9dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/dunggeunmo"
         android:text="null"
         android:textColor="#FFFFFF"
@@ -209,33 +198,35 @@
         android:id="@+id/imageView5"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="97dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAnimalName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAnimalGold"
+        app:layout_constraintStart_toEndOf="@+id/textViewAnimalGold"
+        app:layout_constraintTop_toTopOf="@+id/textViewAnimalGold"
         app:srcCompat="@drawable/coin" />
 
     <TextView
         android:id="@+id/textViewAnimalGold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="null"
-        android:textSize="23sp"
-        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="12dp"
         android:fontFamily="@font/dunggeunmo"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        android:text="null"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAnimalName" />
 
     <TextView
         android:id="@+id/textViewID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/dunggeunmo"
         android:layout_marginBottom="44dp"
+        android:fontFamily="@font/dunggeunmo"
+        android:textColor="#FFFFFF"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

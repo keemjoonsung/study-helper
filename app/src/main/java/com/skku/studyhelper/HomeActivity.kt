@@ -1,17 +1,21 @@
 package com.skku.studyhelper
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
+import android.media.Image
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -22,6 +26,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.zip.Inflater
 
 
 class HomeActivity : AppCompatActivity() {
@@ -54,16 +59,14 @@ class HomeActivity : AppCompatActivity() {
 
             val elapsedSeconds = elapsedMillis / 1000
             val remainingSeconds = initialTotalSeconds - elapsedSeconds.toInt()
-            if(remainingSeconds < -1){ //리워드 끝남
+            if(remainingSeconds < 0){ //타이머 다끝났으면 종료
                 textViewTimer.text = "00:00"
                 editor.putBoolean("isTimer",false)
                 editor.putLong("startTime", 0)
                 editor.putInt("gold", sharedPreferences.getInt("gold", 0) + sharedPreferences.getInt("reward",0))
                 editor.putInt("reward",0)
-                Log.d("ㅇㅇ","끝")
                 editor.apply()
-                //showTimerDoneDialog()
-            }else {
+            }else { //아직 타이머 안끝났을때
                 val remainingMinutesPart = remainingSeconds / 60
                 val remainingSecondsPart = remainingSeconds % 60
                 startTimer(String.format("%02d:%02d", remainingMinutesPart, remainingSecondsPart))
@@ -82,12 +85,13 @@ class HomeActivity : AppCompatActivity() {
             imageViewProfile.setImageResource(
                 it
             )
+
         }
         findViewById<TextView>(R.id.textViewAnimalName).setText(
             Animal.animalNameMap2[sharedPreferences.getString("profile","null")]
         )
         findViewById<TextView>(R.id.textViewAnimalGold).setText(
-            "1분당 " + Animal.animalGoldMap[sharedPreferences.getString("profile","null")].toString() + "G"
+            "1분당 " + Animal.animalGoldMap[sharedPreferences.getString("profile","null")].toString()
         )
         val btnShop = findViewById<ImageView>(R.id.imageViewShop)
         val intentShop = Intent(this, ShopActivity::class.java)
@@ -101,7 +105,28 @@ class HomeActivity : AppCompatActivity() {
                 showStopwatchDialog()
             }
         }
+        val btnSetting = findViewById<ImageView>(R.id.imageViewSetting)
 
+        btnSetting.setOnClickListener{
+            if(sharedPreferences.getBoolean("isTimer",false)){
+                showRejectDialog()
+            }else {
+                showSettingDialog()
+            }
+        }
+
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun showRejectDialog(){
+        val dialog = Dialog(this)
+        val view = LayoutInflater.from(this).inflate(R.layout.reject_dialog,null)
+        dialog.setContentView(view)
+
+        view.findViewById<Button>(R.id.buttonOkay).setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
     private fun startTimer(minutes : String) {
         if(minutes == "00:00") return
@@ -158,20 +183,53 @@ class HomeActivity : AppCompatActivity() {
 
         dialog.show()
     }
-    private fun showTimerDoneDialog() {
+    private fun showSettingDialog(){
         val dialog = Dialog(this)
-
-        val inflater = LayoutInflater.from(this)
-        val dialogView = inflater.inflate(R.layout.timer_finish, null)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.setting_dialog,null)
         dialog.setContentView(dialogView)
-        val btnOkay: Button = dialogView.findViewById(R.id.buttonOkay)
+        val items = ArrayList<String>()
 
-        btnOkay.setOnClickListener {
+        if (sharedPreferences.getBoolean("frog", false)) {
+            items.add("개구리")
+        }
+        if (sharedPreferences.getBoolean("koala", false)) {
+            items.add("코알라")
+        }
+        if (sharedPreferences.getBoolean("panda", false)) {
+            items.add("판다")
+        }
+        dialogView.findViewById<Button>(R.id.buttonBack).setOnClickListener {
             dialog.dismiss()
+        }
+
+        val listViewAdapter = ListViewAdapter(this, items)
+        val listView : ListView = dialogView.findViewById(R.id.characterListView)
+        listView.adapter = listViewAdapter
+
+        listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            val name : String =  parent.adapter.getItem(position) as String
+            val nameEng = Animal.animalNameMap3[name]
+            val profileSrc : Int? = Animal.animalMap[nameEng]
+
+            val profileAnimalGold  = "1분당 " + Animal.animalGoldMap[nameEng].toString()
+
+            val imageViewProfile : PixelatedImageView = findViewById(R.id.imageViewProfile)
+            if (profileSrc != null) {
+                imageViewProfile.setImageResource(profileSrc)
+            }
+
+            val textViewProfile : TextView = findViewById(R.id.textViewAnimalName)
+            textViewProfile.setText(name)
+
+            val textViewProfileGold : TextView = findViewById(R.id.textViewAnimalGold)
+            textViewProfileGold.setText(profileAnimalGold)
+            editor.putString("profile",nameEng)
+            editor.apply()
+            dialog.dismiss()
+
         }
         dialog.show()
     }
-
 
     private fun showConfirmTimerDialog(minutes: String , sharedPreferences: SharedPreferences, editor: Editor) {
         val dialog = Dialog(this)

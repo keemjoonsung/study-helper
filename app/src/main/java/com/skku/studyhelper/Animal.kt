@@ -9,6 +9,7 @@ class Animal {
             "koala" to R.drawable.koala,
             "panda" to R.drawable.panda
         )
+
         val animalPriceMap : Map<Int, Int> = mapOf(
             0 to 0,
             1 to 1000,
@@ -19,6 +20,7 @@ class Animal {
             "koala" to 20,
             "panda" to 30
         )
+
         val animalNameMap: Map<Int, String> = mapOf(
             0 to "frog",
             1 to "koala",
@@ -29,6 +31,12 @@ class Animal {
             "koala" to "코알라",
             "panda" to "판다"
         )
+        val animalNameMap3 : Map<String , String> = mapOf(
+            "개구리" to "frog",
+            "코알라" to "koala",
+            "판다" to "panda",
+        )
+
         val animalExplainMap : Map<Int, String> = mapOf(
             0 to "이름 : 개구리 \n\n\n1분당 골드 획득량 : 10G\n\n\n가격 : 무료",
             1 to "이름 : 코알라 \n\n\n1분당 골드 획득량 : 20G\n\n\n가격 : 1000G",
